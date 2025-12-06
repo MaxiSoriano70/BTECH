@@ -1,0 +1,426 @@
+:root {
+    --primary: #3b4550;
+    --primary-dark: #0a3d66;
+    --primary-hover: #0d5ba8;
+    --primary-light: #09f;
+    --background: #06182a;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.1);
+    --card-bg: #1e293b;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --input-bg: #1e293b;
+    --hsla-example: hsla(210, 100%, 56%, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Inter Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 100 900;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    font-family: system-ui;
+    background-color: var(--background);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2.25rem;
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-wrap: balance;
+}
+
+h1+p {
+    text-wrap: balance;
+    margin-bottom: 2rem
+}
+
+/* Header */
+body > header {
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.titleHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    .linkHome {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+}
+
+.menuHamburguesa {
+    display: none;
+
+    .btnMenu {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        background-color: var(--primary-dark);
+        color: var(--text-primary);
+        font-size: 0.875rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: none;
+        transition: background-color .25s ease, transform .15s;
+    }
+
+    .btnMenu:hover {
+        background-color: var(--primary-hover);
+        transform: scale(.97);
+    }
+
+    .btnMenu svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .abrirMenu {
+        display: none;
+    }
+
+    .cerrarMenu {
+        display: none;
+    }
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        transition: color 0.2s;
+        font-weight: 500;
+
+        &:hover,
+        &:focus {
+            color: var(--primary);
+            outline: none;
+        }
+    }
+}
+
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+header div a {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary-dark);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    transition: background-color .25s ease, transform .15s;
+}
+
+header div a:hover {
+    background-color: var(--primary-hover);
+    transform: scale(.97);
+}
+
+@media (max-width:610px) {
+    body > header {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .titleHeader {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
+    .menuHamburguesa {
+        display: flex;
+    }
+
+    .menuHamburguesa .abrirMenu {
+        display: flex;
+    }
+
+    nav,
+    header>div {
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: max-height .4s, opacity .4s, transform .4s;
+    }
+
+    .menuAbierto {
+        margin: 10px 0;
+        max-height: 500px;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .menuCerrado {
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    nav a {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        border: 1px solid var(--border);
+    }
+
+    header>div {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+/* Hero */
+main>section:nth-child(1) {
+    height: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        padding-top: 36px;
+    }
+
+    &>img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        mask-image: linear-gradient(to bottom, rgba(16, 25, 34, 1) 5%, rgba(16, 25, 34, 0) 80%);
+    }
+}
+
+form {
+    max-width: 42rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 auto;
+    padding-inline: 1rem;
+}
+
+form>div {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    background-color: var(--input-bg);
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px var(--shadow);
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+form input[type="text"] {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    padding: 0.75rem 0.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+form input[type="text"]::placeholder {
+    color: #64748b;
+}
+
+form button[type="submit"] {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: white;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: inherit;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+form button[type="submit"]:hover,
+form button[type="submit"]:focus {
+    background-color: var(--primary-hover);
+    outline-offset: 2px;
+}
+
+/* Hero */
+main>section:nth-child(1) {
+    position: relative;
+    height: 500px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        padding-top: 36px;
+    }
+
+    &>img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        mask-image: linear-gradient(to bottom,
+                rgba(16, 25, 34, 1) 5%,
+                rgba(16, 25, 34, 0) 80%);
+    }
+}
+
+@media (max-width:375px) {
+    form {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding-inline: 1rem;
+    }
+
+    form>div {
+        width: 100%;
+    }
+
+    form button[type="submit"] {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Features Section */
+main > section:nth-child(2) {
+    padding-inline: 1rem;
+    background-color: var(--background);
+    padding-top: 2rem;
+}
+
+main > section:nth-child(2) > header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 0;
+}
+
+main > section:nth-child(2) > header h2 {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+main > section:nth-child(2) > header p {
+    opacity: .75;
+    text-align: center;
+}
+
+main > section:nth-child(2) footer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+/* Tarjetas */
+.cardSection2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    margin-bottom: 16px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 1px 3px 0 var(--shadow);
+}
+
+.cardSection2 svg {
+    color: var(--primary-light);
+    background: rgba(0, 153, 255, 0.3);
+    border-radius: 9999px;
+    width: 64px;
+    height: 64px;
+    padding: 16px;
+}
+
+.cardSection2 h3 {
+    font-weight: 500;
+    text-align: center;
+}
+
+.cardSection2 p {
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Footer */
+body > footer {
+    background-color: var(--background);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 16px;
+}
+
+body > footer small {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
