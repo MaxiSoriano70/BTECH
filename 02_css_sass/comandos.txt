@@ -1,0 +1,8 @@
+INSTALAR SASS
+npm install -g sass
+
+VINCULAR CSS CON SCSS
+sass style.scss style.css
+
+VINCULAR CON GUARDADO AUTOMATICO
+sass --watch style.scss style.css
