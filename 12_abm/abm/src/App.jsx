@@ -1,4 +1,5 @@
 import './App.css'
+import Add from './components/Add'
 import Product from './components/Product'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     {productos.map(producto => (
       <Product key={producto.id} nombre={producto.nombre} precio={producto.precio} cantidad={producto.stock}/>
     ))}
+    <Add />
     </>
   )
 }
