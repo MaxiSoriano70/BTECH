@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+.containerAdd{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.formularioAdd{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.containerInput{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.containerInput label{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.containerAdd input{
+    width: 100%;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.formularioAdd button{
+    width: 100%;
+    font-size: 18px;
+    padding: 5px;
+    background-color: greenyellow;
+    border: none;
+    cursor: pointer;
+}

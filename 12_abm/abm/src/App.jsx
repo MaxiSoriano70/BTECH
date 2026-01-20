@@ -1,5 +1,5 @@
 import './App.css'
-import Add from './components/Add'
+import Add from './components/add/Add'
 import Product from './components/Product'
 
 function App() {
