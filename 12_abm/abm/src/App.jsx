@@ -1,23 +1,36 @@
+import { useState } from 'react';
 import './App.css'
-import Add from './components/add/Add'
-import Product from './components/Product'
+import ProductForm from './components/productForm/ProductForm'
+import ProductList from './components/productList/ProductList'
 
 function App() {
-  const productos = [
+  const productosList = [
     { id: 1, nombre: 'Camisa', precio: 20, stock: 10 },
     { id: 2, nombre: 'Pantalón', precio: 40, stock: 7 },
     { id: 3, nombre: 'Zapatos', precio: 60, stock: 15 }
   ]
 
+  const [productos, setProductos] = useState(productosList);
+
+  /* función para agregar un producto al arreglo de productos */
+  function addProducto(nombre, precio, stock) {
+      /* spread operator */
+      setProductos([...productos, {nombre, precio, stock}]);
+  }
+
+  /* función para eliminar un producto del arreglo de productos */
+  function removeProducto(index) {
+      const aux = productos.filter((producto, i) => i !== index);
+      setProductos(aux);
+  }
+
   return (
     <>
-    <h1>Renderizar listas</h1>
-    {productos.map(producto => (
-      <Product key={producto.id} nombre={producto.nombre} precio={producto.precio} cantidad={producto.stock}/>
-    ))}
-    <Add />
+    <h1>Arquitectura de componentes</h1>
+    <ProductForm onAddProducto={addProducto}/>
+    <ProductList productos={productos} onRemoveProducto={removeProducto}/>
     </>
   )
 }
 
-export default App
+export default App;
