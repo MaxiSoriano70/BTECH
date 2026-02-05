@@ -72,7 +72,8 @@ const ProductForm = ({ onAddProducto }) => {
                     />
                 </div>
 
-                <button type="submit">Agregar</button>
+                <button type="submit">Add
+                </button>
             </form>
         </div>
     );
