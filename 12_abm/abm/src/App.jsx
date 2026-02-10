@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import ProductForm from './components/productForm/ProductForm'
 import ProductList from './components/productList/ProductList'
+import UserList from './components/userList/UserList';
 
 function App() {
   const productosList = [
@@ -28,7 +29,7 @@ function App() {
     <>
     <h1>Arquitectura de componentes</h1>
     <ProductForm onAddProducto={addProducto}/>
-    <ProductList productos={productos} onRemoveProducto={removeProducto}/>
+    <UserList />
     </>
   )
 }
