@@ -1,2 +1,5 @@
 npm create vite@latest
 
+npm create vite@latest 20_firebase_react -- template blank
+
+npm install firebase
