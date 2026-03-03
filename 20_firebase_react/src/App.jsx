@@ -13,6 +13,7 @@ import {
   orderBy,
   doc // 👈 agregado porque lo usás en update
 } from "firebase/firestore";
+import { CheckCircle, Circle } from "lucide-react";
 
 // Configuración de Firebase
 const firebaseConfig = {
@@ -163,10 +164,53 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={estilos.pantalla}>
+      <h1>React + Firebase</h1>
+      <form onSubmit={agregarTarea} style={estilos.formulario}>
+        <input
+          type="text"
+          value={tarea}
+          onChange={(e) => setTarea(e.target.value)}
+          placeholder={idTareaEnEdicion ? "Editar tarea" : "Nueva tarea"}
+        />
+        <button type="submit">{idTareaEnEdicion ? "Editar tarea" : "Agregar tarea"}</button>
+      </form>
       <h1>Lista de tareas</h1>
+      <ul>
+        {listaDeTareas.map((tarea) => (
+          <li key={tarea.id}>
+            <span onClick={()=>updateDoc(doc(db, "tareas" , tarea.id), { completa: !tarea.completa })}>
+              {tarea.completa ?
+              <CheckCircle color="green" size={20} /> :
+              <Circle color="red" size={20}/>}
+            </span>
+            <span>{tarea.nombre} - {new Date(tarea.fechaDeCreacion).toLocaleString()}</span>
+            <button onClick={() => activarEdicion(tarea)}>Editar</button>
+            <button onClick={() => deleteDoc(doc(db, "tareas", tarea.id))}>Eliminar</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default App;
+
+const estilos = {
+  pantalla: {
+    with: "100vw",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "start",
+    padding: "20px",
+  },
+  formulario: {
+    display: "flex",
+    gap: "10px",
+    marginBottom: "20px",
+    backgroundColor: "#f0f0f0",
+    padding: "10px",
+    borderRadius: "5px",
+  },
+};
